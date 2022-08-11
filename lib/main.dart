@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:riverpod_darkmode/providers/theme_mode_provider.dart';
-import 'package:riverpod_darkmode/screens/home_screen.dart';
 
-void main() {
-  runApp(const ProviderScope(child: MyApp()));
+import 'presentation/screens/home_screen.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initHiveForFlutter();
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends ConsumerWidget {
